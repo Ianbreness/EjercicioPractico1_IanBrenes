@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head><title>Servicios</title></head>
+    <body>
+        <div layout:fragment="contenido">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0"><i class="bi bi-stars"></i> Gestión de Servicios</h4>
+                    <a href="/servicios/nuevo" class="btn btn-salon btn-sm"><i class="bi bi-plus-circle-fill"></i> Nuevo Servicio</a>
+                </div>
+                <div class="card-body">
+                    <div th:if="${#lists.isEmpty(servicios)}" class="text-center text-muted py-4">
+                        <i class="bi bi-inbox fs-1"></i>
+                        <p>No hay servicios registrados.</p>
+                    </div>
+                    <table class="table table-hover align-middle" th:unless="${#lists.isEmpty(servicios)}">
+                        <thead>
+                            <tr><th>#</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th class="text-center">Acciones</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="srv : ${servicios}">
+                                <td th:text="${srv.id}"></td>
+                                <td><i class="bi bi-scissors me-1" style="color: var(--dorado);"></i><span th:text="${srv.nombre}"></span></td>
+                                <td><span class="badge" style="background-color: var(--rosa-suave); color: var(--oscuro);" th:text="${srv.categoria.nombre}"></span></td>
+                                <td><strong style="color: var(--dorado);" th:text="'₡' + ${#numbers.formatDecimal(srv.precio, 1, 'COMMA', 2, 'POINT')}"></strong></td>
+                                <td class="text-center">
+                                    <a th:href="@{/servicios/editar/{id}(id=${srv.id})}" class="btn btn-sm btn-warning me-1"><i class="bi bi-pencil-fill"></i> Editar</a>
+                                    <a th:href="@{/servicios/eliminar/{id}(id=${srv.id})}" class="btn btn-sm btn-danger"
+                                       onclick="return confirm('¿Eliminar este servicio?')"><i class="bi bi-trash-fill"></i> Eliminar</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

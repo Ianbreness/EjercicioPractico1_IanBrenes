@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title layout:title-pattern="$CONTENT_TITLE - Salón Bella Vida">Salón Bella Vida</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+        <style>
+            :root {
+                --rosa-suave: #f8c8d4;
+                --dorado: #c9a84c;
+                --oscuro: #2d2d2d;
+                --crema: #fdf6f0;
+            }
+            body {
+                background-color: var(--crema);
+                font-family: 'Segoe UI', sans-serif;
+            }
+            .site-header {
+                background: linear-gradient(135deg, #2d2d2d 0%, #5a3a4a 100%);
+                color: white;
+                padding: 18px 0;
+                text-align: center;
+            }
+            .site-header h1 {
+                font-size: 2rem;
+                letter-spacing: 3px;
+                margin: 0;
+                color: var(--dorado);
+            }
+            .site-header p {
+                margin: 0;
+                font-size: 0.85rem;
+                opacity: 0.8;
+            }
+            .navbar {
+                background-color: var(--rosa-suave) !important;
+                border-bottom: 3px solid var(--dorado);
+            }
+            .nav-link {
+                color: var(--oscuro) !important;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+            .nav-link:hover, .nav-link.active {
+                color: var(--dorado) !important;
+            }
+            main {
+                min-height: calc(100vh - 220px);
+                padding: 30px 0;
+            }
+            .site-footer {
+                background: linear-gradient(135deg, #2d2d2d 0%, #5a3a4a 100%);
+                color: #ccc;
+                padding: 25px 0;
+                text-align: center;
+                font-size: 0.85rem;
+            }
+            .site-footer a {
+                color: var(--dorado);
+                text-decoration: none;
+            }
+            .btn-salon {
+                background-color: var(--dorado);
+                border: none;
+                color: white;
+            }
+            .btn-salon:hover {
+                background-color: #b08a3a;
+                color: white;
+            }
+            .card {
+                border: none;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+                border-radius: 12px;
+            }
+            .card-header {
+                background: linear-gradient(135deg, var(--rosa-suave), #f0d5db);
+                border-bottom: 2px solid var(--dorado);
+                border-radius: 12px 12px 0 0 !important;
+            }
+            .table thead {
+                background-color: var(--rosa-suave);
+            }
+        </style>
+    </head>
+    <body>
+
+        <header class="site-header">
+            <h1><i class="bi bi-scissors"></i> Salón Bella Vida</h1>
+            <p>Tu belleza, nuestra pasión &mdash; Servicios de primera calidad</p>
+        </header>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="/" style="color: var(--oscuro)"><i class="bi bi-house-heart-fill"></i> Bella Vida</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/"><i class="bi bi-house-fill"></i> Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/categorias"><i class="bi bi-tag-fill"></i> Categorías</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/servicios"><i class="bi bi-stars"></i> Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/reservas"><i class="bi bi-calendar-check-fill"></i> Reservas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contacto"><i class="bi bi-envelope-fill"></i> Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <div class="container" layout:fragment="contenido">
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p class="mb-1"><i class="bi bi-scissors"></i> <strong>Salón Bella Vida</strong> &copy; 2026</p>
+                <p class="mb-0">
+                    <i class="bi bi-geo-alt-fill"></i> Av. Principal 123, San José &nbsp;|&nbsp;
+                    <i class="bi bi-telephone-fill"></i> +506 8888-9999 &nbsp;|&nbsp;
+                    <i class="bi bi-envelope-fill"></i> <a href="mailto:info@bellavida.cr">info@bellavida.cr</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

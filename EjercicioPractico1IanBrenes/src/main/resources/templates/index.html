@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head><title>Inicio</title></head>
+    <body>
+        <div layout:fragment="contenido">
+
+            <div class="p-5 mb-4 rounded-4 text-white text-center"
+                 style="background: linear-gradient(135deg, #5a3a4a 0%, #c9a84c 100%);">
+                <h2 class="display-5 fw-bold"><i class="bi bi-scissors"></i> Bienvenidos a Salón Bella Vida</h2>
+                <p class="lead mb-4">Expertos en belleza y cuidado personal. ¡Tu mejor versión comienza aquí!</p>
+                <a href="/reservas/nueva" class="btn btn-light btn-lg me-2"><i class="bi bi-calendar-plus-fill"></i> Reservar Cita</a>
+                <a href="/servicios" class="btn btn-outline-light btn-lg"><i class="bi bi-stars"></i> Ver Servicios</a>
+            </div>
+
+            <div class="card mb-4" style="background: linear-gradient(135deg, #fff0f5, #fff8ee);">
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <span class="badge mb-2" style="background-color: #c9a84c;">⭐ SERVICIO DESTACADO DEL MES</span>
+                            <h3 class="fw-bold" style="color: #5a3a4a;">Tratamiento Balayage Premium</h3>
+                            <p class="text-muted">Un balayage personalizado que realza tu color natural con técnicas de degradado artístico. Incluye hidratación profunda y acabado con brillo espejo.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check-circle-fill text-success"></i> Consulta de color gratuita</li>
+                                <li><i class="bi bi-check-circle-fill text-success"></i> Hidratación nutritiva incluida</li>
+                                <li><i class="bi bi-check-circle-fill text-success"></i> Estilizado profesional</li>
+                            </ul>
+                            <p class="fw-bold fs-4" style="color: #c9a84c;">₡45,000 <small class="text-muted text-decoration-line-through fs-6">₡55,000</small></p>
+                            <a href="/reservas/nueva" class="btn btn-salon"><i class="bi bi-calendar-heart"></i> Reservar Ahora</a>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow">
+                                <iframe src="https://www.youtube.com/embed/mNeHIMmlsZ0"
+                                        title="Tutorial Balayage" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="mb-3 fw-bold" style="color: #5a3a4a;"><i class="bi bi-stars"></i> Nuestros Servicios</h4>
+            <div class="row row-cols-1 row-cols-md-3 g-4 mb-4">
+                <div class="col" th:each="srv : ${servicios}">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <div class="fs-1 mb-2">✂️</div>
+                            <h6 class="fw-bold" th:text="${srv.nombre}">Servicio</h6>
+                            <p class="text-muted small" th:text="${srv.categoria.nombre}">Categoría</p>
+                            <span class="badge" style="background-color: #c9a84c;"
+                                  th:text="'₡' + ${#numbers.formatDecimal(srv.precio, 1, 'COMMA', 2, 'POINT')}">₡0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card text-center p-4" style="background: var(--rosa-suave);">
+                <h5 class="fw-bold"><i class="bi bi-envelope-heart-fill"></i> ¿Tienes alguna consulta?</h5>
+                <p class="text-muted">Escríbenos y te responderemos a la brevedad posible.</p>
+                <a href="/contacto" class="btn btn-salon"><i class="bi bi-send-fill"></i> Contáctanos</a>
+            </div>
+
+        </div>
+    </body>
+</html>

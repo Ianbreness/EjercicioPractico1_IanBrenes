@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+    <head><title>Contacto</title></head>
+    <body>
+        <div layout:fragment="contenido">
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+
+                    <div class="alert alert-success alert-dismissible fade show" th:if="${param.enviado != null}">
+                        <i class="bi bi-check-circle-fill me-2"></i> <strong>¡Mensaje enviado!</strong> Nos comunicaremos pronto.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="bi bi-envelope-heart-fill"></i> Quejas y Sugerencias</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="/contacto/enviar" method="post">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Nombre</label>
+                                        <input type="text" class="form-control" name="nombre" placeholder="Tu nombre" required/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Apellidos</label>
+                                        <input type="text" class="form-control" name="apellidos" placeholder="Tus apellidos" required/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Correo Electrónico</label>
+                                        <input type="email" class="form-control" name="correo" placeholder="tu@correo.com" required/>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Teléfono</label>
+                                        <input type="tel" class="form-control" name="telefono" placeholder="+506 8888-9999"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label fw-semibold">Tipo de Mensaje</label>
+                                    <select class="form-select" name="tipo" required>
+                                        <option value="">-- Seleccione --</option>
+                                        <option value="queja">Queja</option>
+                                        <option value="sugerencia">Sugerencia</option>
+                                        <option value="consulta">Consulta general</option>
+                                        <option value="felicitacion">Felicitación</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label fw-semibold">Mensaje</label>
+                                    <textarea class="form-control" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button type="submit" class="btn btn-salon"><i class="bi bi-send-fill"></i> Enviar Mensaje</button>
+                                    <a href="/" class="btn btn-secondary"><i class="bi bi-house-fill"></i> Volver al Inicio</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h6 class="fw-bold mb-3"><i class="bi bi-geo-alt-fill" style="color: var(--dorado);"></i> También puedes encontrarnos en</h6>
+                            <div class="row text-center">
+                                <div class="col-md-4">
+                                    <i class="bi bi-geo-alt-fill fs-4" style="color: var(--dorado);"></i>
+                                    <p class="small mt-1">Av. Principal 123<br/>San José, Costa Rica</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="bi bi-telephone-fill fs-4" style="color: var(--dorado);"></i>
+                                    <p class="small mt-1">+506 8888-9999<br/>Lun-Sáb 8am - 7pm</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <i class="bi bi-envelope-fill fs-4" style="color: var(--dorado);"></i>
+                                    <p class="small mt-1">info@bellavida.cr<br/>Respuesta en 24h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
